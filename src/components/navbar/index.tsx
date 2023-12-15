@@ -16,7 +16,6 @@ type Props = {
 const navLinks: string[] = ["Home", "Benefits", "Our Classes", "Contact Us"];
 
 const index = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
-  console.log(isTopOfPage);
   const flexBetween = "flex items-center justify-between";
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
@@ -38,7 +37,7 @@ const index = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               <div className={`${flexBetween} w-full`}>
                 {/* nav links */}
                 <div className={`${flexBetween} gap-8 text-sm`}>
-                  {navLinks.map((link) => (
+                  {navLinks.map((link: string) => (
                     <React.Fragment key={link}>
                       <NavLink
                         page={link}
@@ -81,7 +80,7 @@ const index = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
 
           {/* menu items */}
           <div className="text ml-[33%] flex flex-col gap-10 text-2xl">
-            {navLinks.map((link) => (
+            {navLinks.map((link: string) => (
               <React.Fragment key={link}>
                 <NavLink
                   page={link}
