@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import NavLink from './NavLink';
+import React, { useState } from "react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import NavLink from "./NavLink";
 
-import Logo from '@/assets/Logo.png';
-import { SelectedPage } from '@/shared/types';
-import useMediaQuery from '@/hooks/useMediaQuery';
-import ActionButton from '@/shared/ActionButton';
+import Logo from "@/assets/Logo.png";
+import { SelectedPage } from "@/shared/types";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import ActionButton from "@/shared/ActionButton";
 
 type Props = {
   isTopOfPage: boolean;
@@ -13,10 +13,12 @@ type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 
+const navLinks: string[] = ["Home", "Benefits", "Our Classes", "Contact Us"];
+
 const index = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
-  const flexBetween = 'flex items-center justify-between';
-  const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)');
-  const navbarBackground = isTopOfPage ? '' : 'bg-primary-100 drop-shadow';
+  const flexBetween = "flex items-center justify-between";
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+  const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
 
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   return (
@@ -35,26 +37,15 @@ const index = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
               <div className={`${flexBetween} w-full`}>
                 {/* nav links */}
                 <div className={`${flexBetween} gap-8 text-sm`}>
-                  <NavLink
-                    page="Home"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
-                  <NavLink
-                    page="Benefits"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
-                  <NavLink
-                    page="Our Classes"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
-                  <NavLink
-                    page="Contact Us"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
+                  {navLinks.map((link) => (
+                    <React.Fragment key={link}>
+                      <NavLink
+                        page={link}
+                        selectedPage={selectedPage}
+                        setSelectedPage={setSelectedPage}
+                      />
+                    </React.Fragment>
+                  ))}
                 </div>
                 {/* buttons */}
                 <div className={`${flexBetween} gap-8`}>
@@ -89,30 +80,16 @@ const index = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
 
           {/* menu items */}
           <div className="text ml-[33%] flex flex-col gap-10 text-2xl">
-            <NavLink
-              page="Home"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-              isMenuToggled={isMenuToggled}
-            />
-            <NavLink
-              page="Benefits"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-              isMenuToggled={isMenuToggled}
-            />
-            <NavLink
-              page="Our Classes"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-              isMenuToggled={isMenuToggled}
-            />
-            <NavLink
-              page="Contact Us"
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-              isMenuToggled={isMenuToggled}
-            />
+            {navLinks.map((link) => (
+              <React.Fragment key={link}>
+                <NavLink
+                  page={link}
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                  isMenuToggled={isMenuToggled}
+                />
+              </React.Fragment>
+            ))}
           </div>
         </div>
       )}
