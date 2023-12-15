@@ -10,18 +10,18 @@ function App() {
 
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
 
+  console.log(window.scrollY);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY === 0) {
-        console.log(window.scrollY);
         setIsTopOfPage(true);
         setSelectedPage(SelectedPage.Home);
       } else {
         setIsTopOfPage(false);
       }
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
     <div className="app bg-gray-20">
