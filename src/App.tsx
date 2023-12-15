@@ -1,15 +1,14 @@
-import Navbar from '@/components/navbar';
-import { useEffect, useState } from 'react';
-import { SelectedPage } from '@/shared/types';
-SelectedPage;
+import { useEffect, useState } from "react";
+import { SelectedPage } from "@/shared/types";
+
+import Home from "@/components/home";
+import Navbar from "@/components/navbar";
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
     SelectedPage.Home,
   );
 
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
-
-  console.log(isTopOfPage);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,8 +19,8 @@ function App() {
       } else {
         setIsTopOfPage(false);
       }
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (
@@ -31,6 +30,7 @@ function App() {
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
       />
+      <Home setSelectedPage={setSelectedPage} />
     </div>
   );
 }

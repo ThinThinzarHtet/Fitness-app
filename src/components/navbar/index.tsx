@@ -16,6 +16,7 @@ type Props = {
 const navLinks: string[] = ["Home", "Benefits", "Our Classes", "Contact Us"];
 
 const index = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
+  console.log(isTopOfPage);
   const flexBetween = "flex items-center justify-between";
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
